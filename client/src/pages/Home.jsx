@@ -191,7 +191,7 @@ export default function Home() {
             </div>
           </div>
           <div className="p-4 bg-gray-800 rounded-lg border border-gray-700 space-y-4">
-            <h2 className="text-xl font-semibold text-teal-300">Statistics</h2>
+            <h2 className="text-xl font-semibold text-teal-300">Thống kê</h2>
             <ul className="space-y-2">
               {stats.map(stat => (
                 <li key={stat._id} className="flex justify-between text-gray-400">
