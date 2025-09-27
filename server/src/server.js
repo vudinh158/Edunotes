@@ -7,8 +7,29 @@ import noteRouter from "./routes/note.routes.js";
 
 dotenv.config();
 
+const allowedOrigins = [
+  "https://edunotes-three.vercel.app", // domain chính
+  "https://edunotes-git-main-vudinhtran2312-gmailcoms-projects.vercel.app/", // domain preview
+  "http://localhost:5173" // để test local FE
+];
+
 const app = express();
-app.use(cors({ origin: process.env.CLIENT_URL || "http://localhost:5173", credentials: true }));
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (
+        !origin ||
+        origin.endsWith(".vercel.app") ||
+        allowedOrigins.includes(origin)
+      ) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(morgan("dev"));
 
