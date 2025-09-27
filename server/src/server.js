@@ -18,7 +18,7 @@ app.use("/api/notes", noteRouter); // Thay đổi endpoint
 
 const PORT = process.env.PORT || 5000;
 mongoose
-  .connect(process.env.VITE_API_URL)
+  .connect(process.env.MONGO_URI)
   .then(() => {
     app.listen(PORT, () => console.log("Server on http://localhost:" + PORT));
   })
